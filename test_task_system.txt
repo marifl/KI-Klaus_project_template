@@ -1,0 +1,4 @@
+Dies ist ein Test des Task-Management-Systems.
+- Überprüfung der Git-Integration
+- Test der automatischen Status-Updates
+- Validierung der Task-Verwaltung
