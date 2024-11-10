@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Get the current branch name
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+# Extract task ID from branch name (format: feature/TASK-123-description)
+TASK_ID=$(echo $BRANCH_NAME | grep -oP 'TASK-\d+')
+
+if [ ! -z "$TASK_ID" ]; then
+    # Get the commit message
+    COMMIT_MSG=$(git log -1 HEAD --pretty=format:%B)
+    
+    # Extract status from commit message
+    STATUS=$(echo "$COMMIT_MSG" | grep -oP 'Status: \K(IN_PROGRESS|COMPLETED|TESTING)')
+    
+    if [ ! -z "$STATUS" ]; then
+        # Update task status
+        TASK_FILE="dev/tasks/active/$TASK_ID/description.md"
+        
+        if [ -f "$TASK_FILE" ]; then
+            # Update status in task file
+            sed -i "s/- \[ \] $STATUS/- [x] $STATUS/" "$TASK_FILE"
+            
+            # Add timestamp to updates section
+            echo "- $(date '+%Y-%m-%d %H:%M:%S'): Status updated to $STATUS" >> "$TASK_FILE"
+            
+            # If status is COMPLETED, move to completed folder
+            if [ "$STATUS" = "COMPLETED" ]; then
+                mkdir -p "dev/tasks/completed/$(date '+%Y-%m')"
+                mv "$TASK_FILE" "dev/tasks/completed/$(date '+%Y-%m')/"
+                rmdir "dev/tasks/active/$TASK_ID" 2>/dev/null
+            fi
+            
+            # Stage the task file changes
+            git add "$TASK_FILE"
+            git commit --amend --no-edit
+        fi
+    fi
+fi

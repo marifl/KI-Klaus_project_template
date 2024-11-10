@@ -1,0 +1,67 @@
+Projektstruktur von: C:\prj\-sample_project
+======================================
+├── backend
+    ├── microservice1
+        ├── src
+        ├── tests
+        ├── Dockerfile
+        └── environment.yml
+    └── microservice2
+        ├── src
+        ├── tests
+        ├── Dockerfile
+        └── environment.yml
+├── config
+    ├── dev
+    ├── prod
+    └── staging
+├── dev
+    ├── currentTask.md
+    └── notes.md
+├── docs
+    ├── changelog_TEMPLATE.md
+    ├── coding_standards.md
+    ├── custom_instructions.md
+    ├── directory_map.md
+    ├── project_map.md
+    └── workflow.md
+├── frontend
+    ├── public
+    ├── src
+    └── package.json
+├── KI-Klaus
+    ├── 2024-11-06_system_prompt.txt
+    ├── coding_standards.md
+    ├── currentTask_TEMPLATE.md
+    ├── custom_instructions.md
+    ├── doc_project_map.md
+    ├── EXAMPLE_currentTask.md
+    ├── hello.ai
+    ├── role_backend_expert.md
+    ├── role_code_reviewer.md
+    ├── role_devops_engineer.md
+    ├── role_frontend_expert.md
+    ├── role_overview.md
+    ├── role_project_manager.md
+    ├── role_quality_assurance_engineer.md
+    ├── role_software_architect.md
+    ├── template_changelog.md
+    ├── template_codebaseSummary.md
+    ├── template_currentTask.md
+    ├── template_directory_map.md
+    ├── template_projectRoadmap.md
+    ├── template_TaskInstructions.md
+    ├── template_Techstack.md
+    └── template_workflow.md
+├── scripts
+    └── deployment_scripts
+├── tests
+    ├── end_to_end_tests
+    └── integration_tests
+├── .env.example
+├── directory_structure.txt
+├── directory_tree_maker.ps1
+├── docker-compose.yml
+├── folder_tree.txt
+├── README.md
+└── setup_project_structure.ps1

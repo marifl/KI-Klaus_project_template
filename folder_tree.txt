@@ -1,0 +1,39 @@
+project_root/
+├── backend/
+│   ├── microservice1/
+│   │   ├── src/
+│   │   ├── tests/
+│   │   ├── Dockerfile
+│   │   └── requirements.txt
+│   ├── microservice2/
+│   │   ├── src/
+│   │   ├── tests/
+│   │   ├── Dockerfile
+│   │   └── requirements.txt
+│   └── ...
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+├── config/
+│   ├── dev/
+│   ├── staging/
+│   └── prod/
+├── scripts/
+│   └── deployment_scripts/
+├── docs/
+│   ├── custom_instructions.md
+│   ├── hello.ai
+│   ├── changelog_TEMPLATE.md
+│   ├── coding_standards.md
+│   ├── directory_map.md
+│   ├── workflow.md
+│   ├── project_map.md
+│   └── ...
+├── tests/
+│   ├── integration_tests/
+│   └── end_to_end_tests/
+├── .env.example
+├── docker-compose.yml
+└── README.md

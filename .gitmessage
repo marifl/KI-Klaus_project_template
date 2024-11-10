@@ -1,0 +1,25 @@
+[TASK-ID] Typ: Kurze Beschreibung
+
+- Detaillierte Beschreibung
+- Weitere Informationen
+
+Task: #TASK-ID
+Status: [IN_PROGRESS|COMPLETED|TESTING]
+
+# Verfügbare Typen:
+# feat:     Neue Features
+# fix:      Bugfixes
+# refactor: Code-Refactoring
+# docs:     Dokumentationsänderungen
+# test:     Test-bezogene Änderungen
+# chore:    Routine-Tasks, Maintenance
+
+# Beispiel:
+# [TASK-123] feat: Implementiere Login-Funktion
+#
+# - Füge Login-Formular hinzu
+# - Implementiere JWT-Authentication
+# - Füge Error-Handling hinzu
+#
+# Task: #TASK-123
+# Status: IN_PROGRESS
