@@ -1,0 +1,28 @@
+#!/bin/sh
+# Post-commit hook für automatische Versionierung
+
+# Pfad zum PowerShell-Skript (relativ zum Git-Root)
+VERSION_MANAGER="KI-Klaus/scripts/automation/version_manager.ps1"
+
+# Prüfe ob das Skript existiert
+if [ -f "$VERSION_MANAGER" ]; then
+    # Führe Version Manager aus
+    # -NoProfile verhindert das Laden von Profilen
+    # -ExecutionPolicy Bypass erlaubt die Ausführung des Skripts
+    # -File spezifiziert das auszuführende Skript
+    # -BumpType patch erhöht die Patch-Version
+    # -AutoCommit erstellt automatisch einen Commit
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$VERSION_MANAGER" \
+        -BumpType patch \
+        -AutoCommit \
+        -CommitMessage "chore: auto-bump version after commit [skip ci]"
+    
+    # Prüfe auf Fehler
+    if [ $? -ne 0 ]; then
+        echo "Fehler beim Ausführen des Version Managers"
+        exit 1
+    fi
+else
+    echo "Version Manager Skript nicht gefunden: $VERSION_MANAGER"
+    exit 1
+fi

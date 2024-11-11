@@ -1,0 +1,394 @@
+{
+    "version": "1.0.0",
+    "paths": {
+        "base": ".\\KI-Klaus",
+        "scripts": ".\\KI-Klaus\\scripts",
+        "docs": ".\\KI-Klaus\\docs",
+        "templates": ".\\KI-Klaus\\templates",
+        "roles": ".\\KI-Klaus\\roles",
+        "tasks": ".\\dev\\tasks"
+    },
+    "roles": {
+        "available": [
+            "Architect",
+            "Backend",
+            "Frontend",
+            "CodeReviewer",
+            "ProjectManager",
+            "DevOps",
+            "QA"
+        ],
+        "transitions": {
+            "phase_changes": [
+                {
+                    "from": "Architect",
+                    "to": "Backend",
+                    "trigger": "design_complete",
+                    "requirements": [
+                        "Design-Patterns dokumentiert",
+                        "Architektur-Entscheidungen begründet",
+                        "System-Grenzen definiert"
+                    ]
+                },
+                {
+                    "from": "Architect",
+                    "to": "Frontend",
+                    "trigger": "design_complete",
+                    "requirements": [
+                        "UI/UX-Guidelines definiert",
+                        "Design-System dokumentiert",
+                        "Komponenten-Hierarchie erstellt"
+                    ]
+                },
+                {
+                    "from": ["Backend", "Frontend"],
+                    "to": "CodeReviewer",
+                    "trigger": "implementation_complete",
+                    "requirements": [
+                        "Implementation abgeschlossen",
+                        "Tests geschrieben",
+                        "Dokumentation aktualisiert"
+                    ]
+                },
+                {
+                    "from": "CodeReviewer",
+                    "to": "QA",
+                    "trigger": "review_complete",
+                    "requirements": [
+                        "Code-Review abgeschlossen",
+                        "Style-Guidelines eingehalten",
+                        "Best Practices befolgt"
+                    ]
+                },
+                {
+                    "from": "QA",
+                    "to": "DevOps",
+                    "trigger": "testing_complete",
+                    "requirements": [
+                        "Tests erfolgreich",
+                        "Performance-Kriterien erfüllt",
+                        "Edge-Cases abgedeckt"
+                    ]
+                },
+                {
+                    "from": "*",
+                    "to": "Architect",
+                    "trigger": "architecture_review_needed",
+                    "requirements": [
+                        "Architektur-Änderung notwendig",
+                        "Skalierungsproblem identifiziert",
+                        "Technische Schuld kritisch"
+                    ]
+                }
+            ]
+        },
+        "quality_criteria": {
+            "Architect": [
+                "Design-Patterns dokumentiert",
+                "Architektur-Entscheidungen begründet",
+                "Skalierbarkeit berücksichtigt",
+                "System-Grenzen definiert",
+                "Technologie-Stack validiert"
+            ],
+            "Backend": [
+                "Code-Qualität (Complexity < 15)",
+                "Test-Coverage > 80%",
+                "Dokumentation vollständig",
+                "API-Spezifikation aktuell",
+                "Error-Handling implementiert"
+            ],
+            "Frontend": [
+                "UI/UX-Guidelines eingehalten",
+                "Responsive Design",
+                "Accessibility-Standards erfüllt",
+                "Performance-Metriken erreicht",
+                "Browser-Kompatibilität getestet"
+            ],
+            "QA": [
+                "Test-Cases dokumentiert",
+                "Edge-Cases abgedeckt",
+                "Performance-Kriterien erfüllt",
+                "Security-Tests durchgeführt",
+                "Regressions-Tests aktualisiert"
+            ],
+            "DevOps": [
+                "CI/CD-Pipeline funktional",
+                "Monitoring eingerichtet",
+                "Backup-Strategie implementiert",
+                "Security-Patches aktuell",
+                "Skalierung getestet"
+            ],
+            "CodeReviewer": [
+                "Style-Guidelines eingehalten",
+                "Code-Duplikate eliminiert",
+                "Technische Schuld dokumentiert",
+                "Review-Kommentare adressiert",
+                "Best Practices befolgt"
+            ]
+        }
+    },
+    "categories": {
+        "task_management": {
+            "description": "Task-Verwaltung und Dokumentation",
+            "scripts": {
+                "task_manager": {
+                    "path": "automation/task_manager.ps1",
+                    "purpose": "Zentrale Task-Verwaltung",
+                    "when_to_use": [
+                        "Neue Tasks erstellen",
+                        "Status aktualisieren",
+                        "Tasks auflisten"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/task_manager.md"
+                },
+                "task_list": {
+                    "path": "automation/task_list.ps1",
+                    "purpose": "Schnelle Task-Übersicht",
+                    "when_to_use": [
+                        "Task-Status prüfen",
+                        "Übersicht benötigt"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/task_list.md"
+                },
+                "task_thoughts_manager": {
+                    "path": "automation/task_thoughts_manager.ps1",
+                    "purpose": "Gedanken-Dokumentation",
+                    "when_to_use": [
+                        "Gedanken dokumentieren",
+                        "Kontext erfassen",
+                        "Rollenwechsel dokumentieren"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/task_thoughts_manager.md"
+                }
+            }
+        },
+        "analysis": {
+            "description": "Code- und Projekt-Analyse",
+            "scripts": {
+                "git_analyzer": {
+                    "path": "analysis/git_analyzer.ps1",
+                    "purpose": "Git-Repository-Analyse",
+                    "when_to_use": [
+                        "Branch-Status prüfen",
+                        "Merge-Bereitschaft testen",
+                        "Task-bezogene Branches finden"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/git_analyzer.md"
+                },
+                "dependency_analyzer": {
+                    "path": "analysis/dependency_analyzer.ps1",
+                    "purpose": "Dependency-Management",
+                    "when_to_use": [
+                        "Abhängigkeiten prüfen",
+                        "Updates finden",
+                        "Konflikte erkennen"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/dependency_analyzer.md"
+                },
+                "test_coverage_analyzer": {
+                    "path": "analysis/test_coverage_analyzer.ps1",
+                    "purpose": "Test-Coverage-Analyse",
+                    "when_to_use": [
+                        "Testabdeckung prüfen",
+                        "Untestbaren Code finden"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/test_coverage_analyzer.md"
+                },
+                "code_structure": {
+                    "path": "analysis/code_structure.ps1",
+                    "purpose": "Code-Struktur-Analyse",
+                    "when_to_use": [
+                        "Code-Struktur verstehen",
+                        "Große Dateien finden",
+                        "Funktionen analysieren"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/code_structure.md"
+                },
+                "project_health": {
+                    "path": "analysis/project_health.ps1",
+                    "purpose": "Projekt-Gesundheitscheck",
+                    "when_to_use": [
+                        "Projekt-Status prüfen",
+                        "Probleme identifizieren"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/project_health.md"
+                },
+                "code_complexity_analyzer": {
+                    "path": "analysis/code_complexity_analyzer.ps1",
+                    "token_efficient": true,
+                    "purpose": "Analysiert Code-Komplexität für verschiedene Programmiersprachen",
+                    "when_to_use": [
+                        "Code-Review durchführen",
+                        "Refactoring planen",
+                        "Qualitätsprüfung"
+                    ],
+                    "doc": "docs/code_complexity_analyzer.md"
+                },
+                "code_dependency_tracker": {
+                    "path": "analysis/code_dependency_tracker.ps1",
+                    "token_efficient": true,
+                    "purpose": "Analysiert Funktionsabhängigkeiten und findet inkonsistente oder ungenutzte Funktionen",
+                    "when_to_use": [
+                        "Nach Refactoring",
+                        "Bei Funktionsänderungen",
+                        "Code-Review",
+                        "Dependency-Check"
+                    ],
+                    "doc": "docs/code_dependency_tracker.md"
+                }
+            }
+        },
+        "setup": {
+            "description": "Projekt-Setup und Initialisierung",
+            "scripts": {
+                "project_setup": {
+                    "path": "setup/project_setup.ps1",
+                    "purpose": "Vollständiges Projekt-Setup",
+                    "when_to_use": [
+                        "Neues Projekt erstellen",
+                        "Microservices einrichten"
+                    ],
+                    "token_efficient": false,
+                    "doc": "docs/project_setup.md"
+                },
+                "init_git": {
+                    "path": "setup/init_git.ps1",
+                    "purpose": "Git-Repository-Setup",
+                    "when_to_use": [
+                        "Git initialisieren",
+                        "Hooks einrichten"
+                    ],
+                    "token_efficient": false,
+                    "doc": "docs/init_git.md"
+                }
+            }
+        },
+        "documentation": {
+            "description": "Dokumentations-Management",
+            "scripts": {
+                "doc_generate": {
+                    "path": "documentation/doc_generate.ps1",
+                    "purpose": "Dokumentations-Generierung",
+                    "when_to_use": [
+                        "API-Docs erstellen",
+                        "Setup-Anleitungen generieren"
+                    ],
+                    "token_efficient": true,
+                    "doc": "docs/doc_generate.md"
+                }
+            }
+        },
+        "automation": {
+            "description": "Scripts for automation",
+            "scripts": {
+                "setup_git_hooks": {
+                    "path": "automation/setup_git_hooks.ps1",
+                    "token_efficient": true,
+                    "purpose": "Richtet Git-Hooks für automatische Versionierung ein",
+                    "when_to_use": [
+                        "Bei Projekt-Setup",
+                        "Nach Git-Clone",
+                        "Bei Hook-Updates"
+                    ],
+                    "doc": "docs/setup_git_hooks.md"
+                }
+            }
+        }
+    },
+    "common_patterns": {
+        "new_task": {
+            "description": "Neuen Task erstellen und dokumentieren",
+            "steps": [
+                {
+                    "script": "task_manager",
+                    "action": "New-Task",
+                    "purpose": "Task erstellen"
+                }
+            ]
+        },
+        "role_transition": {
+            "description": "Rollenwechsel durchführen",
+            "steps": [
+                {
+                    "script": "task_manager",
+                    "action": "Update-TaskStatus",
+                    "purpose": "Rolle aktualisieren"
+                },
+                {
+                    "script": "task_thoughts_manager",
+                    "action": "New-TaskThoughts",
+                    "purpose": "Rollenwechsel dokumentieren"
+                }
+            ]
+        },
+        "code_review": {
+            "description": "Code-Review durchführen",
+            "steps": [
+                {
+                    "script": "git_analyzer",
+                    "purpose": "Branch analysieren"
+                },
+                {
+                    "script": "test_coverage_analyzer",
+                    "purpose": "Testabdeckung prüfen"
+                },
+                {
+                    "script": "dependency_analyzer",
+                    "purpose": "Abhängigkeiten prüfen"
+                }
+            ]
+        },
+        "project_health": {
+            "description": "Projekt-Gesundheit prüfen",
+            "steps": [
+                {
+                    "script": "project_health",
+                    "purpose": "Gesundheitscheck durchführen"
+                },
+                {
+                    "script": "dependency_analyzer",
+                    "purpose": "Abhängigkeiten prüfen"
+                },
+                {
+                    "script": "test_coverage_analyzer",
+                    "purpose": "Testabdeckung prüfen"
+                }
+            ]
+        },
+        "quality_check": {
+            "description": "Qualitätsprüfung durchführen",
+            "role_specific": {
+                "Backend": [
+                    {
+                        "script": "code_complexity_analyzer",
+                        "purpose": "Komplexität prüfen"
+                    },
+                    {
+                        "script": "test_coverage_analyzer",
+                        "purpose": "Tests prüfen"
+                    }
+                ],
+                "Frontend": [
+                    {
+                        "script": "code_structure",
+                        "purpose": "UI-Struktur prüfen"
+                    }
+                ],
+                "QA": [
+                    {
+                        "script": "project_health",
+                        "purpose": "Gesamtqualität prüfen"
+                    }
+                ]
+            }
+        }
+    }
+}

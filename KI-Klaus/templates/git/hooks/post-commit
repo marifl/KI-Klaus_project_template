@@ -18,22 +18,33 @@ if [ ! -z "$TASK_ID" ]; then
         TASK_FILE="dev/tasks/active/$TASK_ID/description.md"
         
         if [ -f "$TASK_FILE" ]; then
-            # Update status in task file
-            sed -i "s/- \[ \] $STATUS/- [x] $STATUS/" "$TASK_FILE"
+            # Create temporary file
+            TEMP_FILE=$(mktemp)
             
-            # Add timestamp to updates section
-            echo "- $(date '+%Y-%m-%d %H:%M:%S'): Status updated to $STATUS" >> "$TASK_FILE"
+            # Update status markers
+            sed 's/- \[.\] '"$STATUS"'/- [x] '"$STATUS"'/' "$TASK_FILE" | \
+            sed 's/- \[x\] \(NEW\|IN_PROGRESS\|REVIEW\|TESTING\|COMPLETED\)$/- [ ] \1/' | \
+            sed '/^- \[.\] '"$STATUS"'$/s/- \[ \]/- [x]/' > "$TEMP_FILE"
+            
+            # Add single timestamp update
+            TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+            echo "" >> "$TEMP_FILE"
+            echo "- $TIMESTAMP: Status updated to $STATUS" >> "$TEMP_FILE"
+            
+            # Replace original file
+            mv "$TEMP_FILE" "$TASK_FILE"
             
             # If status is COMPLETED, move to completed folder
             if [ "$STATUS" = "COMPLETED" ]; then
-                mkdir -p "dev/tasks/completed/$(date '+%Y-%m')"
-                mv "$TASK_FILE" "dev/tasks/completed/$(date '+%Y-%m')/"
+                MONTH_DIR="dev/tasks/completed/$(date '+%Y-%m')"
+                mkdir -p "$MONTH_DIR"
+                mv "$TASK_FILE" "$MONTH_DIR/"
                 rmdir "dev/tasks/active/$TASK_ID" 2>/dev/null
             fi
             
             # Stage the task file changes
             git add "$TASK_FILE"
-            git commit --amend --no-edit
+            git commit --amend --no-edit --no-verify
         fi
     fi
 fi

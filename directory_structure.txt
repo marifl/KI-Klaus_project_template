@@ -1,67 +1,424 @@
-Projektstruktur von: C:\prj\-sample_project
-======================================
-├── backend
-    ├── microservice1
-        ├── src
-        ├── tests
-        ├── Dockerfile
-        └── environment.yml
-    └── microservice2
-        ├── src
-        ├── tests
-        ├── Dockerfile
-        └── environment.yml
-├── config
-    ├── dev
-    ├── prod
-    └── staging
-├── dev
-    ├── currentTask.md
-    └── notes.md
-├── docs
-    ├── changelog_TEMPLATE.md
-    ├── coding_standards.md
-    ├── custom_instructions.md
-    ├── directory_map.md
-    ├── project_map.md
-    └── workflow.md
-├── frontend
-    ├── public
-    ├── src
-    └── package.json
-├── KI-Klaus
-    ├── 2024-11-06_system_prompt.txt
-    ├── coding_standards.md
-    ├── currentTask_TEMPLATE.md
-    ├── custom_instructions.md
-    ├── doc_project_map.md
-    ├── EXAMPLE_currentTask.md
-    ├── hello.ai
-    ├── role_backend_expert.md
-    ├── role_code_reviewer.md
-    ├── role_devops_engineer.md
-    ├── role_frontend_expert.md
-    ├── role_overview.md
-    ├── role_project_manager.md
-    ├── role_quality_assurance_engineer.md
-    ├── role_software_architect.md
-    ├── template_changelog.md
-    ├── template_codebaseSummary.md
-    ├── template_currentTask.md
-    ├── template_directory_map.md
-    ├── template_projectRoadmap.md
-    ├── template_TaskInstructions.md
-    ├── template_Techstack.md
-    └── template_workflow.md
-├── scripts
-    └── deployment_scripts
-├── tests
-    ├── end_to_end_tests
-    └── integration_tests
-├── .env.example
-├── directory_structure.txt
-├── directory_tree_maker.ps1
-├── docker-compose.yml
-├── folder_tree.txt
-├── README.md
-└── setup_project_structure.ps1
+VERZEICHNISSTRUKTUR
+===================
+Projektpfad: C:\prj\-sample_project
+
++-- backend/
+    +-- microservice1/
+        +-- src/
+        +-- tests/
+        +-- Dockerfile
+        +-- environment.yml
+    +-- microservice2/
+        +-- src/
+        +-- tests/
+        +-- Dockerfile
+        +-- environment.yml
++-- config/
+    +-- dev/
+    +-- prod/
+    +-- staging/
++-- dev/
+    +-- tasks/
+        +-- active/
+        +-- completed/
+            +-- 2024-11/
+                +-- TASK-20241110232227/
+                    +-- thoughts/
+                        +-- thoughts_20241110_232227.md
+                        +-- thoughts_20241110_232642.md
+                        +-- thoughts_20241110_232657.md
+                        +-- thoughts_20241110_232921.md
+                        +-- thoughts_20241110_232938.md
+                        +-- thoughts_20241110_233007.md
+                        +-- thoughts_20241110_233018.md
+                        +-- thoughts_index.md
+                    +-- description.md
+                +-- description.md
+            +-- .gitkeep
+    +-- currentTask.md
+    +-- notes.md
++-- docs/
+    +-- code_complexity_analyzer.md
+    +-- code_dependency_tracker.md
+    +-- setup_git_hooks.md
+    +-- version_manager.md
++-- frontend/
+    +-- public/
+    +-- src/
+    +-- package.json
++-- KI-Klaus/
+    +-- docs/
+        +-- task-role-solution.md
+    +-- modules/
+        +-- TaskManager/
+            +-- TaskManager.psd1
+            +-- TaskManager.psm1
+        +-- ThoughtManager/
+            +-- ThoughtManager.psd1
+            +-- ThoughtManager.psm1
+        +-- install.ps1
+    +-- roles/
+        +-- role_backend_expert.md
+        +-- role_code_reviewer.md
+        +-- role_devops_engineer.md
+        +-- role_frontend_expert.md
+        +-- role_overview.md
+        +-- role_project_manager.md
+        +-- role_quality_assurance_engineer.md
+        +-- role_software_architect.md
+    +-- scripts/
+        +-- analysis/
+            +-- code_complexity_analyzer.ps1
+            +-- code_dependency_tracker.ps1
+            +-- code_structure.ps1
+            +-- dependency_analyzer.ps1
+            +-- git_analyzer.ps1
+            +-- project_health.ps1
+            +-- test_coverage_analyzer.ps1
+        +-- automation/
+            +-- git_hooks/
+                +-- post-commit
+            +-- setup_git_hooks.ps1
+            +-- task_list.ps1
+            +-- task_manager.ps1
+            +-- task_thoughts_manager.ps1
+            +-- task_workflow.md
+            +-- version_manager.ps1
+        +-- core/
+            +-- registry.json
+        +-- documentation/
+            +-- doc_generate.ps1
+        +-- setup/
+            +-- init_git.ps1
+            +-- project_setup.ps1
+        +-- find_script.ps1
+        +-- IDEAS.md
+        +-- README.md
+        +-- register_script.ps1
+    +-- templates/
+        +-- docs/
+            +-- template_changelog.md
+            +-- template_codebaseSummary.md
+            +-- template_currentTask.md
+            +-- template_directory_map.md
+            +-- template_projectRoadmap.md
+            +-- template_TaskInstructions.md
+            +-- template_Techstack.md
+            +-- template_workflow.md
+        +-- git/
+            +-- hooks/
+                +-- post-commit
+            +-- .gitmessage
+        +-- tasks/
+            +-- task_template.md
+            +-- task_thoughts_template.md
+    +-- 2024-11-06_system_prompt.txt
+    +-- 2024-11-10_system_prompt.md
+    +-- 2024-11-10_system_prompt._v2md
+    +-- coding_standards.md
+    +-- custom_instructions.md
+    +-- doc_project_map.md
+    +-- EXAMPLE_currentTask.md
+    +-- hello.ai
++-- scripts/
+    +-- deployment_scripts/
++-- tests/
+    +-- end_to_end_tests/
+    +-- integration_tests/
++-- .env.example
++-- .gitignore
++-- .gitmessage
++-- debug.log
++-- directory_structure.txt
++-- directory_tree_maker.ps1
++-- docker-compose.yml
++-- folder_tree.txt
++-- git_integration.md
++-- git_workflow.md
++-- implementation_plan.md
++-- MEINUNG.md
++-- README.md
++-- template_verification.md
++-- test_task_system.txt
+
+RELATIVE PFADE:
+================
+backend/
+config/
+dev/
+docs/
+frontend/
+KI-Klaus/
+scripts/
+tests/
+.env.example
+.gitignore
+.gitmessage
+debug.log
+directory_structure.txt
+directory_tree_maker.ps1
+docker-compose.yml
+folder_tree.txt
+git_integration.md
+git_workflow.md
+implementation_plan.md
+MEINUNG.md
+README.md
+template_verification.md
+test_task_system.txt
+backend\microservice1/
+backend\microservice2/
+backend\microservice1\src/
+backend\microservice1\tests/
+backend\microservice1\Dockerfile
+backend\microservice1\environment.yml
+backend\microservice2\src/
+backend\microservice2\tests/
+backend\microservice2\Dockerfile
+backend\microservice2\environment.yml
+config\dev/
+config\prod/
+config\staging/
+dev\tasks/
+dev\currentTask.md
+dev\notes.md
+dev\tasks\active/
+dev\tasks\completed/
+dev\tasks\completed\2024-11/
+dev\tasks\completed\.gitkeep
+dev\tasks\completed\2024-11\TASK-20241110232227/
+dev\tasks\completed\2024-11\description.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts/
+dev\tasks\completed\2024-11\TASK-20241110232227\description.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232227.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232642.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232657.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232921.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232938.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_233007.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_233018.md
+dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_index.md
+docs\code_complexity_analyzer.md
+docs\code_dependency_tracker.md
+docs\setup_git_hooks.md
+docs\version_manager.md
+frontend\public/
+frontend\src/
+frontend\package.json
+KI-Klaus\docs/
+KI-Klaus\modules/
+KI-Klaus\roles/
+KI-Klaus\scripts/
+KI-Klaus\templates/
+KI-Klaus\2024-11-06_system_prompt.txt
+KI-Klaus\2024-11-10_system_prompt.md
+KI-Klaus\2024-11-10_system_prompt._v2md
+KI-Klaus\coding_standards.md
+KI-Klaus\custom_instructions.md
+KI-Klaus\doc_project_map.md
+KI-Klaus\EXAMPLE_currentTask.md
+KI-Klaus\hello.ai
+KI-Klaus\docs\task-role-solution.md
+KI-Klaus\modules\TaskManager/
+KI-Klaus\modules\ThoughtManager/
+KI-Klaus\modules\install.ps1
+KI-Klaus\modules\TaskManager\TaskManager.psd1
+KI-Klaus\modules\TaskManager\TaskManager.psm1
+KI-Klaus\modules\ThoughtManager\ThoughtManager.psd1
+KI-Klaus\modules\ThoughtManager\ThoughtManager.psm1
+KI-Klaus\roles\role_backend_expert.md
+KI-Klaus\roles\role_code_reviewer.md
+KI-Klaus\roles\role_devops_engineer.md
+KI-Klaus\roles\role_frontend_expert.md
+KI-Klaus\roles\role_overview.md
+KI-Klaus\roles\role_project_manager.md
+KI-Klaus\roles\role_quality_assurance_engineer.md
+KI-Klaus\roles\role_software_architect.md
+KI-Klaus\scripts\analysis/
+KI-Klaus\scripts\automation/
+KI-Klaus\scripts\core/
+KI-Klaus\scripts\documentation/
+KI-Klaus\scripts\setup/
+KI-Klaus\scripts\find_script.ps1
+KI-Klaus\scripts\IDEAS.md
+KI-Klaus\scripts\README.md
+KI-Klaus\scripts\register_script.ps1
+KI-Klaus\scripts\analysis\code_complexity_analyzer.ps1
+KI-Klaus\scripts\analysis\code_dependency_tracker.ps1
+KI-Klaus\scripts\analysis\code_structure.ps1
+KI-Klaus\scripts\analysis\dependency_analyzer.ps1
+KI-Klaus\scripts\analysis\git_analyzer.ps1
+KI-Klaus\scripts\analysis\project_health.ps1
+KI-Klaus\scripts\analysis\test_coverage_analyzer.ps1
+KI-Klaus\scripts\automation\git_hooks/
+KI-Klaus\scripts\automation\setup_git_hooks.ps1
+KI-Klaus\scripts\automation\task_list.ps1
+KI-Klaus\scripts\automation\task_manager.ps1
+KI-Klaus\scripts\automation\task_thoughts_manager.ps1
+KI-Klaus\scripts\automation\task_workflow.md
+KI-Klaus\scripts\automation\version_manager.ps1
+KI-Klaus\scripts\automation\git_hooks\post-commit
+KI-Klaus\scripts\core\registry.json
+KI-Klaus\scripts\documentation\doc_generate.ps1
+KI-Klaus\scripts\setup\init_git.ps1
+KI-Klaus\scripts\setup\project_setup.ps1
+KI-Klaus\templates\docs/
+KI-Klaus\templates\git/
+KI-Klaus\templates\tasks/
+KI-Klaus\templates\docs\template_changelog.md
+KI-Klaus\templates\docs\template_codebaseSummary.md
+KI-Klaus\templates\docs\template_currentTask.md
+KI-Klaus\templates\docs\template_directory_map.md
+KI-Klaus\templates\docs\template_projectRoadmap.md
+KI-Klaus\templates\docs\template_TaskInstructions.md
+KI-Klaus\templates\docs\template_Techstack.md
+KI-Klaus\templates\docs\template_workflow.md
+KI-Klaus\templates\git\hooks/
+KI-Klaus\templates\git\.gitmessage
+KI-Klaus\templates\git\hooks\post-commit
+KI-Klaus\templates\tasks\task_template.md
+KI-Klaus\templates\tasks\task_thoughts_template.md
+scripts\deployment_scripts/
+tests\end_to_end_tests/
+tests\integration_tests/
+
+ABSOLUTE PFADE:
+===============
+C:\prj\-sample_project\backend/
+C:\prj\-sample_project\config/
+C:\prj\-sample_project\dev/
+C:\prj\-sample_project\docs/
+C:\prj\-sample_project\frontend/
+C:\prj\-sample_project\KI-Klaus/
+C:\prj\-sample_project\scripts/
+C:\prj\-sample_project\tests/
+C:\prj\-sample_project\.env.example
+C:\prj\-sample_project\.gitignore
+C:\prj\-sample_project\.gitmessage
+C:\prj\-sample_project\debug.log
+C:\prj\-sample_project\directory_structure.txt
+C:\prj\-sample_project\directory_tree_maker.ps1
+C:\prj\-sample_project\docker-compose.yml
+C:\prj\-sample_project\folder_tree.txt
+C:\prj\-sample_project\git_integration.md
+C:\prj\-sample_project\git_workflow.md
+C:\prj\-sample_project\implementation_plan.md
+C:\prj\-sample_project\MEINUNG.md
+C:\prj\-sample_project\README.md
+C:\prj\-sample_project\template_verification.md
+C:\prj\-sample_project\test_task_system.txt
+C:\prj\-sample_project\backend\microservice1/
+C:\prj\-sample_project\backend\microservice2/
+C:\prj\-sample_project\backend\microservice1\src/
+C:\prj\-sample_project\backend\microservice1\tests/
+C:\prj\-sample_project\backend\microservice1\Dockerfile
+C:\prj\-sample_project\backend\microservice1\environment.yml
+C:\prj\-sample_project\backend\microservice2\src/
+C:\prj\-sample_project\backend\microservice2\tests/
+C:\prj\-sample_project\backend\microservice2\Dockerfile
+C:\prj\-sample_project\backend\microservice2\environment.yml
+C:\prj\-sample_project\config\dev/
+C:\prj\-sample_project\config\prod/
+C:\prj\-sample_project\config\staging/
+C:\prj\-sample_project\dev\tasks/
+C:\prj\-sample_project\dev\currentTask.md
+C:\prj\-sample_project\dev\notes.md
+C:\prj\-sample_project\dev\tasks\active/
+C:\prj\-sample_project\dev\tasks\completed/
+C:\prj\-sample_project\dev\tasks\completed\2024-11/
+C:\prj\-sample_project\dev\tasks\completed\.gitkeep
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227/
+C:\prj\-sample_project\dev\tasks\completed\2024-11\description.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts/
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\description.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232227.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232642.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232657.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232921.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_232938.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_233007.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_20241110_233018.md
+C:\prj\-sample_project\dev\tasks\completed\2024-11\TASK-20241110232227\thoughts\thoughts_index.md
+C:\prj\-sample_project\docs\code_complexity_analyzer.md
+C:\prj\-sample_project\docs\code_dependency_tracker.md
+C:\prj\-sample_project\docs\setup_git_hooks.md
+C:\prj\-sample_project\docs\version_manager.md
+C:\prj\-sample_project\frontend\public/
+C:\prj\-sample_project\frontend\src/
+C:\prj\-sample_project\frontend\package.json
+C:\prj\-sample_project\KI-Klaus\docs/
+C:\prj\-sample_project\KI-Klaus\modules/
+C:\prj\-sample_project\KI-Klaus\roles/
+C:\prj\-sample_project\KI-Klaus\scripts/
+C:\prj\-sample_project\KI-Klaus\templates/
+C:\prj\-sample_project\KI-Klaus\2024-11-06_system_prompt.txt
+C:\prj\-sample_project\KI-Klaus\2024-11-10_system_prompt.md
+C:\prj\-sample_project\KI-Klaus\2024-11-10_system_prompt._v2md
+C:\prj\-sample_project\KI-Klaus\coding_standards.md
+C:\prj\-sample_project\KI-Klaus\custom_instructions.md
+C:\prj\-sample_project\KI-Klaus\doc_project_map.md
+C:\prj\-sample_project\KI-Klaus\EXAMPLE_currentTask.md
+C:\prj\-sample_project\KI-Klaus\hello.ai
+C:\prj\-sample_project\KI-Klaus\docs\task-role-solution.md
+C:\prj\-sample_project\KI-Klaus\modules\TaskManager/
+C:\prj\-sample_project\KI-Klaus\modules\ThoughtManager/
+C:\prj\-sample_project\KI-Klaus\modules\install.ps1
+C:\prj\-sample_project\KI-Klaus\modules\TaskManager\TaskManager.psd1
+C:\prj\-sample_project\KI-Klaus\modules\TaskManager\TaskManager.psm1
+C:\prj\-sample_project\KI-Klaus\modules\ThoughtManager\ThoughtManager.psd1
+C:\prj\-sample_project\KI-Klaus\modules\ThoughtManager\ThoughtManager.psm1
+C:\prj\-sample_project\KI-Klaus\roles\role_backend_expert.md
+C:\prj\-sample_project\KI-Klaus\roles\role_code_reviewer.md
+C:\prj\-sample_project\KI-Klaus\roles\role_devops_engineer.md
+C:\prj\-sample_project\KI-Klaus\roles\role_frontend_expert.md
+C:\prj\-sample_project\KI-Klaus\roles\role_overview.md
+C:\prj\-sample_project\KI-Klaus\roles\role_project_manager.md
+C:\prj\-sample_project\KI-Klaus\roles\role_quality_assurance_engineer.md
+C:\prj\-sample_project\KI-Klaus\roles\role_software_architect.md
+C:\prj\-sample_project\KI-Klaus\scripts\analysis/
+C:\prj\-sample_project\KI-Klaus\scripts\automation/
+C:\prj\-sample_project\KI-Klaus\scripts\core/
+C:\prj\-sample_project\KI-Klaus\scripts\documentation/
+C:\prj\-sample_project\KI-Klaus\scripts\setup/
+C:\prj\-sample_project\KI-Klaus\scripts\find_script.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\IDEAS.md
+C:\prj\-sample_project\KI-Klaus\scripts\README.md
+C:\prj\-sample_project\KI-Klaus\scripts\register_script.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\code_complexity_analyzer.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\code_dependency_tracker.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\code_structure.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\dependency_analyzer.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\git_analyzer.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\project_health.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\analysis\test_coverage_analyzer.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\automation\git_hooks/
+C:\prj\-sample_project\KI-Klaus\scripts\automation\setup_git_hooks.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\automation\task_list.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\automation\task_manager.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\automation\task_thoughts_manager.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\automation\task_workflow.md
+C:\prj\-sample_project\KI-Klaus\scripts\automation\version_manager.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\automation\git_hooks\post-commit
+C:\prj\-sample_project\KI-Klaus\scripts\core\registry.json
+C:\prj\-sample_project\KI-Klaus\scripts\documentation\doc_generate.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\setup\init_git.ps1
+C:\prj\-sample_project\KI-Klaus\scripts\setup\project_setup.ps1
+C:\prj\-sample_project\KI-Klaus\templates\docs/
+C:\prj\-sample_project\KI-Klaus\templates\git/
+C:\prj\-sample_project\KI-Klaus\templates\tasks/
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_changelog.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_codebaseSummary.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_currentTask.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_directory_map.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_projectRoadmap.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_TaskInstructions.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_Techstack.md
+C:\prj\-sample_project\KI-Klaus\templates\docs\template_workflow.md
+C:\prj\-sample_project\KI-Klaus\templates\git\hooks/
+C:\prj\-sample_project\KI-Klaus\templates\git\.gitmessage
+C:\prj\-sample_project\KI-Klaus\templates\git\hooks\post-commit
+C:\prj\-sample_project\KI-Klaus\templates\tasks\task_template.md
+C:\prj\-sample_project\KI-Klaus\templates\tasks\task_thoughts_template.md
+C:\prj\-sample_project\scripts\deployment_scripts/
+C:\prj\-sample_project\tests\end_to_end_tests/
+C:\prj\-sample_project\tests\integration_tests/

@@ -1,126 +1,329 @@
-# Welcome, KI-Klaus!
+# Willkommen, KI-Klaus!
 
-This `hello.ai` file is your starting point. Please read and follow these instructions carefully.
+## 0. WICHTIG: Rollen-Check
 
----
+Vor JEDER Session:
+1. Prüfe aktuelle Rolle:
+   ```powershell
+   # Aktive Tasks mit Rollen anzeigen
+   .\KI-Klaus\scripts\find_script.ps1 -Purpose "Tasks auflisten"
+   Get-ActiveTasks -IncludeRoles
+   ```
 
-## Initial Check
+2. Prüfe laufende Tasks vor Rollenwechsel:
+   - Status aller aktiven Tasks
+   - Notwendige Übergaben
+   - Abhängigkeiten zwischen Tasks
 
-1. **Verify the `docs/` Directory**
+3. Evaluiere Rollenwechsel-Bedarf basierend auf:
+   - Task-Phase-Änderung:
+     * Design → Implementation (Architect → Backend/Frontend)
+     * Implementation → Testing (Backend/Frontend → QA)
+     * Testing → Release (QA → DevOps)
+   - Expertise-Anforderung:
+     * Architektur-Entscheidungen (→ Architect)
+     * Code-Komplexität (→ Backend/Frontend)
+     * Performance-Probleme (→ DevOps)
+   - Qualitätssicherung:
+     * Code-Review (→ CodeReviewer)
+     * Test-Automation (→ QA)
+     * Security-Audit (→ DevOps)
 
-   - **If `docs/` is empty or does not exist**:
+4. Dokumentiere Rollen-Status:
+   ```powershell
+   # Dokumentiere Rollenwechsel
+   Update-TaskStatus `
+       -TaskId $taskId `
+       -CurrentRole $newRole `
+       -RoleTransitionReason "Grund für Wechsel"
 
-     - Assume this is a **new project**.
-     - Proceed to **set up the project** by gathering necessary information from the user.
-     - **Pick the Appropriate Role**:
-       - Assume the role of **Project Manager** or **Software Architect** until the setup task is finished.
+   # Dokumentiere Übergabe
+   New-TaskThoughts `
+       -TaskId $taskId `
+       -CurrentRole $newRole `
+       -CurrentThoughts @"
+Übergabe von $previousRole:
+- Abgeschlossene Arbeiten: ...
+- Offene Punkte: ...
+- Wichtige Entscheidungen: ...
+- Nächste Schritte: ...
+"@
+   ```
 
-   - **If `docs/` exists and contains documents**:
+## 1. Dokumentations-Hierarchie
 
-     - Proceed with the **Standard Workflow** outlined below.
+Prüfe Dokumente in dieser Reihenfolge:
+1. KI-Klaus/role_overview.md (Rollen-Definitionen)
+2. docs/projectRoadmap.md (Projekt-Kontext)
+3. dev/currentTask.md (Aktuelle Aufgabe)
+4. docs/techStack.md (Technologie-Stack)
 
----
+## 2. Skript-Nutzung
 
-## For New Projects
+WICHTIG: Nutze IMMER PowerShell-Pfadformat:
+```powershell
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Deine Aufgabe"
+```
 
-1. **Gather Project Information**
+Skript-Auswahl-Priorität:
+1. Rollen-spezifische Skripte
+2. Task-Management-Skripte
+3. Analyse-Skripte
 
-   - **Ask the User Mandatory Questions**:
+JSON-Output IMMER für:
+1. Task-Status-Updates
+2. Rollen-Wechsel
+3. Analyse-Ergebnisse
 
-     - **Project Purpose**: What is the primary purpose of the project?
-     - **Project Type**: Is it a simple Python script, a web application, or something else?
-     - **Components Required**:
+BEISPIELE für Skript-Nutzung:
+- Bei Task-Erstellung: `.\KI-Klaus\scripts\find_script.ps1 -Purpose "Task erstellen"`
+- Bei Code-Analyse: `.\KI-Klaus\scripts\find_script.ps1 -Purpose "Code analysieren"`
+- Bei Projekt-Setup: `.\KI-Klaus\scripts\find_script.ps1 -Purpose "Projekt einrichten"`
 
-       - Does it require a frontend?
-       - Is a backend necessary?
-       - Will there be APIs?
-       - Is database integration needed?
-       - Any other specific components?
+WICHTIG: 
+- Nutze IMMER zuerst find_script.ps1
+- Wähle token-effiziente Skripte wenn möglich
+- Folge den Skript-Empfehlungen
 
-     - **Preferred Technologies or Frameworks**:
+## 3. Projekt-Typ bestimmen
 
-       - Are there any specific languages or frameworks to use?
-       - Any constraints or preferences?
+### Neues Projekt
+Wenn `docs/` leer ist oder nicht existiert:
+1. Rolle "Project Manager" oder "Software Architect" übernehmen:
+```powershell
+New-TaskThoughts `
+    -TaskId "SETUP" `
+    -CurrentRole "Architect" `
+    -CurrentThoughts "Projekt-Setup beginnt" `
+    -NextSteps @("Architektur definieren", "Stack wählen")
+```
 
-     - **High-Level Goals and Key Features**:
+2. Notwendige Informationen sammeln:
+   - Projektzweck
+   - Projekttyp
+   - Benötigte Komponenten
+   - Technologie-Präferenzen
+   - Hauptziele und Features
 
-       - What are the main objectives?
-       - Any critical features that must be included?
+3. Projekt initialisieren:
+```powershell
+# Finde passendes Setup-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Projekt einrichten"
+# Führe Setup aus
+.\KI-Klaus\scripts\setup\project_setup.ps1 -ProjectName "ProjektName" [-IncludeMicroservices]
+```
 
-2. **Set Up Essential Documents**
+### Bestehendes Projekt
+Wenn Dokumentation vorhanden:
+1. Schnelle Codeanalyse durchführen:
+```powershell
+# Finde Analyse-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Code analysieren"
+# Führe Analyse aus
+.\KI-Klaus\scripts\code_structure.ps1
+```
 
-   - **Use Templates to Create Files in `docs/` Directory**:
+2. Aktive Tasks prüfen:
+```powershell
+# Finde Task-Management-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Tasks auflisten"
+# Prüfe Tasks
+Import-Module .\KI-Klaus\scripts\automation\task_manager.ps1
+Get-ActiveTasks -JsonOutput -IncludeRoles
+```
 
-     - `docs/projectRoadmap.md`: Outline high-level goals, features, and progress tracking.
-     - `docs/techStack.md`: Document chosen technologies and architectural decisions.
-     - `docs/codebaseSummary.md`: Provide an overview of the project structure.
+## 4. Task-Management
 
-   - **Populate the Documents**:
+### Bei Task-Start
+1. Task erstellen und Gedanken dokumentieren:
+```powershell
+# Finde Task-Erstellungs-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Task erstellen"
+# Erstelle Task
+$taskId = New-Task `
+    -Description "Neue Aufgabe" `
+    -Type feature `
+    -RequiredRoles @("Architect", "Backend", "QA") `
+    -InitialRole "Architect" `
+    -JsonOutput `
+    -InitialThoughts "Erste Analyse"
+# Dokumentiere Gedanken
+New-TaskThoughts `
+    -TaskId $taskId `
+    -CurrentRole "Architect" `
+    -CurrentThoughts "Detaillierte Planung" `
+    -NextSteps @("Schritt 1", "Schritt 2")
+```
 
-     - Based on the information gathered from the user.
-     - Ensure clarity and completeness.
+### Während der Arbeit
+1. Regelmäßige Gedanken-Updates:
+```powershell
+# Finde Gedanken-Update-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Gedanken dokumentieren"
+# Update Gedanken
+New-TaskThoughts `
+    -TaskId "TASK-ID" `
+    -CurrentRole "CurrentRole" `
+    -CurrentThoughts "Neue Erkenntnisse" `
+    -NextSteps @("Nächster Schritt")
+```
 
-3. **Proceed with Standard Workflow**
+2. Status-Updates:
+```powershell
+# Finde Status-Update-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Task Status aktualisieren"
+# Update Status
+Update-TaskStatus `
+    -TaskId "TASK-ID" `
+    -Status "IN_PROGRESS" `
+    -CurrentRole "CurrentRole" `
+    -JsonOutput `
+    -StatusNotes "Aktueller Fortschritt"
+```
 
-   - After setting up the initial documents, continue with the **Standard Workflow** below.
+### Bei Task-Abschluss
+1. QA-Rolle übernehmen und finale Prüfung:
+```powershell
+# Wechsel zu QA-Rolle
+Update-TaskStatus `
+    -TaskId "TASK-ID" `
+    -CurrentRole "QA" `
+    -RoleTransitionReason "Finale Qualitätsprüfung"
 
----
+# Dokumentiere QA-Gedanken
+New-TaskThoughts `
+    -TaskId "TASK-ID" `
+    -CurrentRole "QA" `
+    -CurrentThoughts "Qualitätsprüfung" `
+    -NextSteps @("Tests durchführen", "Dokumentation prüfen")
+```
 
-## Standard Workflow for Existing Projects
+2. Task abschließen:
+```powershell
+# Finde Task-Abschluss-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Task abschließen"
+# Schließe Task ab
+Update-TaskStatus `
+    -TaskId "TASK-ID" `
+    -Status "COMPLETED" `
+    -CurrentRole "QA" `
+    -JsonOutput `
+    -StatusNotes "Erfolgreich abgeschlossen und getestet"
+```
 
-1. **Read Essential Documents in Order**
+3. Qualitätschecks:
+```powershell
+# Finde Qualitätscheck-Skripte
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Code analysieren"
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Projekt Gesundheit"
+# Führe Checks aus
+.\KI-Klaus\scripts\code_structure.ps1
+.\KI-Klaus\scripts\project_health.ps1
+```
 
-   - **1. `docs/projectRoadmap.md`** (for high-level context and goals)
-   - **2. `dev/currentTask.md`** (for current objectives)
-   - **3. `docs/techStack.md`** (for technology choices)
-   - **4. `docs/codebaseSummary.md`** (for project structure and recent changes)
+## 5. Rollen-spezifische Qualitätskriterien
 
-2. **Select Your Role**
+### Architect
+- Design-Patterns dokumentiert
+- Architektur-Entscheidungen begründet
+- Skalierbarkeit berücksichtigt
+- System-Grenzen definiert
+- Technologie-Stack validiert
 
-   - Refer to `KI-Klaus/role_overview.md` to determine the appropriate role based on current tasks.
-   - Document your role selection and reasoning in your `currentTask` file.
+### Backend
+- Code-Qualität (Complexity < 15)
+- Test-Coverage > 80%
+- Dokumentation vollständig
+- API-Spezifikation aktuell
+- Error-Handling implementiert
 
-3. **Review Open Tasks**
+### Frontend
+- UI/UX-Guidelines eingehalten
+- Responsive Design
+- Accessibility-Standards erfüllt
+- Performance-Metriken erreicht
+- Browser-Kompatibilität getestet
 
-   - Check previous `currentTask` files in the `dev/` directory for any open tasks.
-   - Consolidate open tasks into your new `currentTask` file with a timestamped filename (e.g., `currentTask_YYYYMMDD_HHMMSS.md`).
+### QA
+- Test-Cases dokumentiert
+- Edge-Cases abgedeckt
+- Performance-Kriterien erfüllt
+- Security-Tests durchgeführt
+- Regressions-Tests aktualisiert
 
-4. **Plan Your Work**
+### DevOps
+- CI/CD-Pipeline funktional
+- Monitoring eingerichtet
+- Backup-Strategie implementiert
+- Security-Patches aktuell
+- Skalierung getestet
 
-   - In the "Planning and Rationale" section of your `currentTask` file, outline **what** you plan to do and **why**.
-   - This ensures continuity and assists others who may take over.
+### CodeReviewer
+- Style-Guidelines eingehalten
+- Code-Duplikate eliminiert
+- Technische Schuld dokumentiert
+- Review-Kommentare adressiert
+- Best Practices befolgt
 
----
+## 6. Best Practices
 
-## Reminders
+### Token-Optimierung
+1. Nutze Skripte für:
+   - Dateistruktur-Analyse
+   - Task-Management
+   - Gesundheitschecks
+   
+2. Vermeide:
+   - Direktes Dateilesen wenn möglich
+   - Manuelle Verzeichnisdurchsuchung
+   - Wiederholte Status-Checks
 
-- **File Size Limitation**
+### Dokumentation
+1. Standardisierte Dokumente:
+```powershell
+# Finde Dokumentations-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Dokumentation generieren"
+# Generiere Dokumentation
+.\KI-Klaus\scripts\doc_generate.ps1 -Type setup -Name "Installation"
+```
 
-  - Individual files should **never exceed 300 lines**.
-  - If a file approaches this limit, refactor and split it into logical, functional files.
-  - **Automatically update all references** to refactored files in other parts of the codebase.
+2. Regelmäßige Updates:
+   - Bei neuen Features
+   - Nach Refactoring
+   - Bei Architekturänderungen
 
-- **Efficient File Reading**
+### Code-Qualität
+1. Große Dateien identifizieren:
+```powershell
+# Finde Code-Analyse-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Code Struktur analysieren"
+# Analysiere Code
+.\KI-Klaus\scripts\code_structure.ps1 | ConvertFrom-Json | Select-Object -ExpandProperty LargeFiles
+```
 
-  - When multiple files need to be read, process them in logical batches to reduce costs.
+2. Gesundheitschecks durchführen:
+```powershell
+# Finde Gesundheitscheck-Skript
+.\KI-Klaus\scripts\find_script.ps1 -Purpose "Projekt Gesundheit"
+# Führe Check aus
+.\KI-Klaus\scripts\project_health.ps1 | ConvertFrom-Json | Select-Object -ExpandProperty Recommendations
+```
 
-- **Be Concise**
+## 7. Wichtige Hinweise
 
-  - Keep your outputs precise to minimize costs.
-  - Communicate clearly and avoid unnecessary verbosity.
+1. IMMER find_script.ps1 für Werkzeugauswahl nutzen
+2. IMMER JSON-Output für Token-Optimierung verwenden
+3. IMMER Gedanken strukturiert dokumentieren
+4. IMMER Qualitätschecks vor Abschluss durchführen
+5. IMMER Rollenwechsel dokumentieren
+6. NIEMALS Tasks ohne QA-Prüfung abschließen
 
-- **Regular Updates**
+## 8. Hilfe und Dokumentation
 
-  - Continuously update documentation and maps.
-  - Ensure all team members have access to the latest information.
+- Skript-Registry: .\KI-Klaus\scripts\core\registry.json
+- Skript-Dokumentation: .\KI-Klaus\scripts\README.md
+- Task-Templates: .\KI-Klaus\templates\tasks\
+- Git-Templates: .\KI-Klaus\templates\git\
+- Rollen-Übersicht: .\KI-Klaus\roles\role_overview.md
 
-- **Adaptability and Proactivity**
-
-  - Continuously adapt to new requirements and instructions.
-  - Anticipate potential issues and address them proactively.
-
----
-
-Thank you for your assistance!
-
-*Note: Always refer back to this `hello.ai` file and the other documentation in the `KI-Klaus/` directory whenever you need guidance.*
+*Hinweis: Die Skripte sind darauf ausgelegt, dir die Arbeit zu erleichtern und Token zu sparen. Nutze sie konsequent!*
